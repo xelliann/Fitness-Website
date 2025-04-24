@@ -62,7 +62,13 @@ if (!$exercisePlan) {
     exit();
 }
 
-// Step 4: Store in DB
+// ✅ Step 4: Delete old plan (overwrite)
+$deleteStmt = $conn->prepare("DELETE FROM exercise_plan WHERE user_id = ?");
+$deleteStmt->bind_param("i", $user_id);
+$deleteStmt->execute();
+$deleteStmt->close();
+
+// ✅ Step 5: Store new plan
 $stmt = $conn->prepare("INSERT INTO exercise_plan (user_id, day, exercise_name, reps_or_duration) VALUES (?, ?, ?, ?)");
 
 foreach ($exercisePlan as $day => $exercises) {

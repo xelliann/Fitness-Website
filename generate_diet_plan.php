@@ -1,12 +1,11 @@
 <?php
 require 'includes/db.php';
-
-// Load the .env file
 loadEnv(__DIR__ . '/includes/.env');
 $openai_api_key = $_ENV['OPENAI_API_KEY'];
 
+session_start();
 if (!isset($_SESSION['user_id'])) {
-    header('Location: ../auth/login.php');
+    header('Location: auth/login.php');
     exit();
 }
 
@@ -28,7 +27,6 @@ Format the response as JSON like:
     'lunch': {...},
     'dinner': {...}
   },
-  'tuesday': { ... },
   ...
 }";
 
@@ -41,42 +39,43 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json',
     'Authorization: Bearer ' . $openai_api_key
 ]);
-
-$data = [
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
     'model' => 'gpt-3.5-turbo',
     'messages' => [
         ['role' => 'user', 'content' => $prompt]
     ],
     'temperature' => 0.7
-];
-
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+]));
 
 $response = curl_exec($ch);
 curl_close($ch);
 
-// Step 3: Parse JSON Response
 $responseData = json_decode($response, true);
 $chatContent = $responseData['choices'][0]['message']['content'] ?? '';
-
 $mealPlan = json_decode($chatContent, true);
 
-if (!$mealPlan) {
+if (!$mealPlan || !is_array($mealPlan)) {
     echo "Invalid plan received. Try again.";
     exit();
 }
 
-// Step 4: Insert into MySQL
-$stmt = $conn->prepare("INSERT INTO diet_plan (user_id, day, meal_type, meal_name, calories) VALUES (?, ?, ?, ?, ?)");
+// Step 3: Overwrite if plan exists
+$deleteStmt = $conn->prepare("DELETE FROM diet_plan WHERE user_id = ?");
+$deleteStmt->bind_param("i", $user_id);
+$deleteStmt->execute();
+$deleteStmt->close();
+
+// Step 4: Insert new plan
+$insertStmt = $conn->prepare("INSERT INTO diet_plan (user_id, day, meal_type, meal_name, calories) VALUES (?, ?, ?, ?, ?)");
 
 foreach ($mealPlan as $day => $meals) {
     foreach ($meals as $mealType => $mealData) {
-        $stmt->bind_param("isssi", $user_id, $day, $mealType, $mealData['name'], $mealData['calories']);
-        $stmt->execute();
+        $insertStmt->bind_param("isssi", $user_id, $day, $mealType, $mealData['name'], $mealData['calories']);
+        $insertStmt->execute();
     }
 }
 
-$stmt->close();
+$insertStmt->close();
 $conn->close();
 
 header("Location: view_diet_plan.php");

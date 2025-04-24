@@ -33,7 +33,7 @@ $current_page = basename($_SERVER['PHP_SELF']); // e.g., "exercise_plans.php"
 
 <aside class="sidebar">
   <div class="logo">
-    <img src="<?= ROOT_URL ?>assets/images/logo1.jpg" height="140px" width="140px">
+    <img src="<?= ROOT_URL ?>assets/images/logo1.jpg" height="100px" width="100px">
   </div>
   <div class="nav">
     <div class="<?= $current_page === 'index.php' ? 'active' : '' ?>">
