@@ -24,8 +24,13 @@ $totalUsers = $countResult->fetch_assoc()['total'];
 <head>
   <meta charset="UTF-8">
   <title>Admin - Users</title>
-  <link rel="stylesheet" href="../assets/admin.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Daily Meal Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="<?= ROOT_URL ?>assets/dashboard.css" />
+  <!-- Google Fonts: Montserrat & Rubik -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,800;1,700&display=swap" rel="stylesheet"> 
+
 </head>
 <body>
   <div class="admin-container">
@@ -33,7 +38,7 @@ $totalUsers = $countResult->fetch_assoc()['total'];
     <?php include 'sidebar.php'; ?>
 
     <!-- Main Content -->
-    <div class="main-content">
+    <div class="mohit">
     <?php if (isset($_SESSION['message'])): ?>
   <div class="success-message">
     <?= $_SESSION['message']; unset($_SESSION['message']); ?>

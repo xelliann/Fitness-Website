@@ -1,8 +1,9 @@
 <?php
-include 'includes/db.php'; 
 session_start();
+include 'includes/db.php'; 
+
 $user_id = $_SESSION['user_id'] ?? null;
-$username = $_SESSION['username'] ?? null;
+$username = $_SESSION['username'] ?? '';
 
 if (!$user_id) {
   header('Location: auth/login.php');
@@ -65,18 +66,21 @@ $current_page = basename($_SERVER['PHP_SELF']); // e.g., "exercise_plans.php"
     <div class="nav1">
       <div class="nav-search">
         
-        <i class="fas fa-search"></i>
-        <input type="text" class="search-bar" placeholder="Search your food...">
+        <form action="gallery.php" method="get" class="nav-search">
+          <i class="fas fa-search"></i>
+          <input type="text" name="q" class="search-bar" placeholder="Search exercise images...">
+        </form>
       </div>
       <nav class="top-nav">
         <a href="#">Help</a>
         <a href="feedback.php">Feedback</a>
 
-        <?php if ($username): ?>
+        <?php if ($user_id): ?>
           <div class="user-menu" onclick="toggleUserMenu()">
-            <span><?= htmlspecialchars($username) ?> <i class="fas fa-caret-down"></i></span>
+          <span><?= htmlspecialchars($username) ?> 
+          <i class="fas fa-caret-down"></i></span>
             <ul class="dropdown" id="userDropdown">
-              <li><a href="profile.php"><i class="fas fa-user"></i> Settings</a></li>
+              <li><a href="<?= ROOT_URL ?>admin/users.php"><i class="fas fa-user"></i> Settings</a></li>
               <li><a href="<?= ROOT_URL ?>auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
           </div>
@@ -87,6 +91,8 @@ $current_page = basename($_SERVER['PHP_SELF']); // e.g., "exercise_plans.php"
       </nav>
     </div>
 <hr>
+  </div>
+
   </main>
 <script>
   function toggleUserMenu() {

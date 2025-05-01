@@ -1,35 +1,38 @@
-<div class="sidebar">
-  <div class="sidebar-header">
-    <h2 style="margin: 0;"><span class="sidebar-title">Admin</span></h2>
-    <button class="toggle-btn" id="toggleSidebarBtn" title="Collapse Sidebar">
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
+<div class="wrapper">
+  <!-- Sidebar -->
+  <?php
+$current_page = basename($_SERVER['PHP_SELF']); // e.g., "exercise_plans.php"
+?>
 
-  <ul class="sidebar-links">
-    <li>
-      <a href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
-    </li>
-    <li>
-      <a href="users.php"><i class="fas fa-users"></i><span>Users</span></a>
-    </li>
-    <li><a href="diet_plans.php"><i class="fas fa-utensils"></i> <span>Diet Plans</span></a></li>
-<li><a href="exercise_plans.php"><i class="fas fa-dumbbell"></i> <span>Exercise Plans</span></a></li>
-    <li>
-      <a href="feedback.php"><i class="fas fa-comment-alt"></i><span>Feedback</span></a>
-    </li>
-    <li>
-      <a href="logout.php"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
-    </li>
-  </ul>
-
-  <!-- Dark mode toggle -->
-  <div class="switch">
-    <label>
-      <input type="checkbox" id="darkModeToggle">
-      <span class="slider"></span>
-    </label>
+<aside class="sidebar">
+  <div class="logo">
+    <img src="<?= ROOT_URL ?>assets/images/logo1.jpg" height="100px" width="100px">
   </div>
+  <div class="nav">
+    <div class="<?= $current_page === 'dashboard.php' ? 'active' : '' ?>">
+      <a href="<?= ROOT_URL ?>index.php"><span class="material-symbols-outlined">grid_view</span>Dashboard</a>
+    </div>
+
+    <div class="<?= $current_page === 'users.php' ? 'active' : '' ?>">
+      <a href="<?= ROOT_URL ?>admin/users.php"><i class="fas fa-users"></i>Users</a>
+    </div>
+
+    <div class="<?= $current_page === 'feedback.php' ? 'active' : '' ?>">
+      <a href="<?= ROOT_URL ?>feedback.php"><i class="fas fa-comment-alt"></i> Feedback</a>
+    </div>
+
+    <div class="<?= $current_page === 'upload_image.php' ? 'active' : '' ?>">
+      <a href="<?= ROOT_URL ?>admin/upload_image.php"><span class="material-symbols-outlined">upload_file</span>Upload image</a>
+    </div>
+
+    <div class="<?= $current_page === 'logout.php' ? 'active' : '' ?>">
+      <a href="<?= ROOT_URL ?>logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+    </div>
+  </div>
+    
+</aside>
+  
+</div>
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
