@@ -23,7 +23,7 @@ if (!isset($_SESSION['user_id'])) {
         <li><a href="#">Users</a></li>
         <li><a href="#">Plans</a></li>
         <li><a href="#">Feedback</a></li>
-        <li><a href="auth/logout.php">Logout</a></li>
+        <li><a href="../auth/logout.php">Logout</a></li>
       </ul>
     </aside>
 

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['role'] = $user['role'];
-        header('Location: ../admin/dashboard.php');
+        header('Location: ../index.php');
         exit();
     } else {
         $_SESSION['error'] = "Invalid credentials.";
