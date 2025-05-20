@@ -53,5 +53,9 @@ $conn->close();
             </div>
             <?php endforeach; ?>
         </div>
-</body>
+        </div>
+<?php
+include 'partials/footer.php';
+?>
+    </body>
 </html>

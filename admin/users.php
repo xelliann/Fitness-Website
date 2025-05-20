@@ -33,18 +33,18 @@ $totalUsers = $countResult->fetch_assoc()['total'];
 
 </head>
 <body>
-  <div class="admin-container">
-    <!-- Sidebar -->
-    <?php include 'sidebar.php'; ?>
-
-    <!-- Main Content -->
-    <div class="mohit">
+  <!-- Sidebar -->
+  <?php include 'sidebar.php'; ?>
+  
+  <!-- Main Content -->
+  <div class="mohit">
     <?php if (isset($_SESSION['message'])): ?>
-  <div class="success-message">
-    <?= $_SESSION['message']; unset($_SESSION['message']); ?>
-  </div>
-<?php endif; ?>
-
+      <div class="success-message">
+        <?= $_SESSION['message']; unset($_SESSION['message']); ?>
+      </div>
+      <?php endif; ?>
+      
+      <div class="ex">
       <div class="header">
         <h1>Manage Users</h1>
         <p>Total Users: <strong><?= $totalUsers ?></strong></p>
@@ -94,6 +94,7 @@ $totalUsers = $countResult->fetch_assoc()['total'];
                 <?php endif; ?>
                 </tbody>
             </table>
+            </div>
             </div>
 
     </div>

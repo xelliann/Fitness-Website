@@ -16,3 +16,7 @@ include 'partials/header.php';
         <button type="submit">Calculate BMI</button>
     </form>
 </div>
+</div>
+<?php
+include 'partials/footer.php';
+?>

@@ -3,12 +3,22 @@ include 'includes/db.php';
 
 $search = $_GET['q'] ?? '';
 $search_sql = "%" . $conn->real_escape_string($search) . "%";
+$genre = isset($_GET['genre']) ? strtolower(trim($_GET['genre'])) : '';
 
-$sql = "SELECT * FROM exercise_images WHERE tags LIKE ? ORDER BY created_at DESC";
+$sql = "SELECT * FROM exercise_images";
+$params = [];
+
+if ($genre) {
+    $sql .= " WHERE LOWER(genre) LIKE ?";
+    $genreParam = "%$genre%";
+    $params[] = $genreParam;
+}
+
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $search_sql);
-$stmt->execute();
-$result = $stmt->get_result();
+
+if (!empty($params)) {
+    $stmt->bind_param("s", ...$params);
+}
 ?>
 
 <div class="gallery">

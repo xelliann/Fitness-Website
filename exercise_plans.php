@@ -36,11 +36,13 @@ $conn->close();
                     <div class="ex11">
                         No exercise plan found.
                     </div>
-                    <div>
+                    <div class="ex11">
                         <a href="create_exercise_form.php" class="btn secondary">Create New Plan</a>
                     </div>
                 <?php endif; ?>
             </div>
         </div>
+    </div>
+        <?php include 'partials/footer.php'; ?>
 
 

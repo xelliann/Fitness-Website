@@ -9,8 +9,8 @@ $current_page = basename($_SERVER['PHP_SELF']); // e.g., "exercise_plans.php"
     <img src="<?= ROOT_URL ?>assets/images/logo1.jpg" height="100px" width="100px">
   </div>
   <div class="nav">
-    <div class="<?= $current_page === 'dashboard.php' ? 'active' : '' ?>">
-      <a href="<?= ROOT_URL ?>index.php"><span class="material-symbols-outlined">grid_view</span>Dashboard</a>
+    <div class="<?= $current_page === 'profile.php' ? 'active' : '' ?>">
+      <a href="<?= ROOT_URL ?>/admin/profile.php"><span class="material-symbols-outlined">grid_view</span>Profile</a>
     </div>
 
     <div class="<?= $current_page === 'users.php' ? 'active' : '' ?>">
@@ -26,14 +26,14 @@ $current_page = basename($_SERVER['PHP_SELF']); // e.g., "exercise_plans.php"
     </div>
 
     <div class="<?= $current_page === 'logout.php' ? 'active' : '' ?>">
-      <a href="<?= ROOT_URL ?>logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+      <a href="<?= ROOT_URL ?>auth/logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
     </div>
   </div>
     
 </aside>
   
-</div>
-</div>
+
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;

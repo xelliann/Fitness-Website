@@ -31,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
   <div class="ex1">
     Submit Feedback
-  
   </div>
     <?php if ($success): ?>
       <div class="success-message"><?= $success ?></div>
@@ -44,5 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <button type="submit">Submit Feedback</button>
     </form>
   </div>
+</div>
 </body>
 </html>
+<?php
+include 'partials/footer.php';
+?>

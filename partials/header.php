@@ -65,22 +65,25 @@ $current_page = basename($_SERVER['PHP_SELF']); // e.g., "exercise_plans.php"
     <!-- Topbar -->
     <div class="nav1">
       <div class="nav-search">
-        
-        <form action="gallery.php" method="get" class="nav-search">
-          <i class="fas fa-search"></i>
-          <input type="text" name="q" class="search-bar" placeholder="Search exercise images...">
+        <form action="gallery.php" method="get" class="search-form">
+          <input type="text" name="genre" class="search-bar" placeholder="Search workouts (e.g. cardio, strength, abs)" required>
+          <button type="submit"><i class="fas fa-search"></i></button>
         </form>
       </div>
+
+
       <nav class="top-nav">
-        <a href="#">Help</a>
         <a href="feedback.php">Feedback</a>
+        <a href="contact_us.php">Contact Us</a>
+        <a href="about_us.php">About Us</a>
+        <a href="help.php">Help</a>
 
         <?php if ($user_id): ?>
           <div class="user-menu" onclick="toggleUserMenu()">
           <span><?= htmlspecialchars($username) ?> 
           <i class="fas fa-caret-down"></i></span>
             <ul class="dropdown" id="userDropdown">
-              <li><a href="<?= ROOT_URL ?>admin/users.php"><i class="fas fa-user"></i> Settings</a></li>
+              <li><a href="<?= ROOT_URL ?>admin/profile.php"><i class="fas fa-user"></i> Settings</a></li>
               <li><a href="<?= ROOT_URL ?>auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
           </div>
@@ -91,7 +94,6 @@ $current_page = basename($_SERVER['PHP_SELF']); // e.g., "exercise_plans.php"
       </nav>
     </div>
 <hr>
-  </div>
 
   </main>
 <script>

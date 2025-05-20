@@ -49,10 +49,10 @@ $conn->close();
         </div>
     <?php endforeach; ?>
 </div>
+</div>
 
-<footer>
-    <p>&copy; 2025 Your Diet Plan</p>
-</footer>
-
+<?php
+include 'partials/footer.php';
+?>
 </body>
 </html>

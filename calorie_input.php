@@ -15,6 +15,7 @@ require 'partials/header.php';
     </form>
 
 </div>
-
+</div>
 <?php
+include 'partials/footer.php';
 ?>

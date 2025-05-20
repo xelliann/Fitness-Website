@@ -129,8 +129,8 @@ const chart = new Chart(ctx, {
       y: { beginAtZero: true }
     }
   }
-});svccva
+});
 </script>
-
+<?php include 'partials/footer.php';?>
 </body>
 </html>
