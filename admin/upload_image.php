@@ -107,6 +107,9 @@ $success = $error = '';
                 <option value="cardio">Cardio</option>
                 <option value="strength">Strength</option>
                 <option value="abs">Abs</option>
+                <option value="Wellness">Wellness</option>
+                <option value="Yoga">Yoga</option>
+                <option value="Stretching">Stretching</option>
             </select>
 <br>
 <br>

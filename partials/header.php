@@ -65,7 +65,7 @@ $current_page = basename($_SERVER['PHP_SELF']); // e.g., "exercise_plans.php"
     <!-- Topbar -->
     <div class="nav1">
       <div class="nav-search">
-        <form action="gallery.php" method="get" class="search-form">
+        <form action="search_engine.php" method="get" class="search-form">
           <input type="text" name="genre" class="search-bar" placeholder="Search workouts (e.g. cardio, strength, abs)" required>
           <button type="submit"><i class="fas fa-search"></i></button>
         </form>

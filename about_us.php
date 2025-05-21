@@ -37,7 +37,7 @@ include 'partials/header.php'
     <li>Enable community sharing and motivation tracking.</li>
   </ul>
 
-  <p>Thank you for visiting FitSmart Planner. We’re glad to be part of your journey to better health!</p>
+  <p>Thank you for visiting Fit-Bit Planner. We’re glad to be part of your journey to better health!</p>
 
 </div>
 </div>
