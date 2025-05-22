@@ -25,7 +25,7 @@ include 'partials/header.php'
   <p>This is an group project made by
     <strong>Akshay Kumar,</strong>
     <strong>Himanshu Kumar,</strong>
-    <strong>Sammer Sha,</strong>
+    <strong>Sameer Sha,</strong>
     <strong>Sandeep.</strong>
 
   This project reflects the perfect blend of personal passion and technical learning.</p>
