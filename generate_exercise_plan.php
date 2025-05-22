@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require 'includes/db.php';
 
 loadEnv(__DIR__ . '/includes/.env');
@@ -17,17 +19,28 @@ $gender = $_POST['gender'];
 $goal = $_POST['goal'];
 
 // Step 1: Build Prompt
-$prompt = "Create a 7-day exercise plan for a $age-year-old $gender who is $height cm tall and weighs $weight kg. 
-The goal is $goal. 
-Format the response as JSON with each day containing 2 to 3 exercises. 
-Each exercise should include 'name' and either 'reps' or 'duration'. Example format:
+$prompt = "Create a detailed 7-day exercise plan for a $age-year-old $gender who is $height cm tall and weighs $weight kg. 
+The fitness goal is $goal. 
+For each day, provide 3 to 5 exercises targeting different muscle groups or fitness components. 
+Include at least one rest or active recovery day. 
+Format the response strictly as JSON with keys as days of the week ('monday', 'tuesday', etc.), and each day having an array of exercises. 
+Each exercise must have a 'name' and either 'reps' or 'duration'. 
+Example format:
 {
   'monday': [
-    {'name': 'Push-ups', 'reps': '3 sets of 15'},
-    {'name': 'Jumping Jacks', 'duration': '3 minutes'}
+    {'name': 'Bench Press', 'reps': '3 sets of 10'},
+    {'name': 'Squats', 'reps': '3 sets of 12'},
+    {'name': 'Jump Rope', 'duration': '5 minutes'}
   ],
-  'tuesday': [ ... ],
+  'tuesday': [
+    {'name': 'Deadlifts', 'reps': '3 sets of 8'},
+    {'name': 'Pull-ups', 'reps': '3 sets of 10'},
+    {'name': 'Plank', 'duration': '1 minute'}
+  ],
   ...
+  'sunday': [
+    {'name': 'Rest Day'}
+  ]
 }";
 
 // Step 2: Call OpenAI API
