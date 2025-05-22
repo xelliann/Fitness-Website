@@ -936,3 +936,62 @@ li {
   color: #9b5de5;
   font-weight: 500;
 }
+.contact-container {
+  margin-left:250px ;
+  border-radius: 16px;
+  padding: 40px;
+}
+.contact-container h1 {
+  font-size: 2.5rem;
+  color: #9b5de5;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.contact-container h2 {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.contact-info {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.contact-box {
+  background: #f9f3ff;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e2d4f8;
+}
+
+.contact-box h3 {
+  color: #9b5de5;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.contact-box p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+.social-links {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.social-links a {
+  margin: 0 10px;
+  color: #9b5de5;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #7b36d9;
+}

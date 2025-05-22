@@ -2,7 +2,7 @@
 define("ROOT_URL", "http://localhost/health-planner/");
 $host = "127.0.0.1";
 $port = 3307;
-$db = "fit";
+$db = "health_planner";
 $user = "root";
 $pass = "";
 function loadEnv($path) {
