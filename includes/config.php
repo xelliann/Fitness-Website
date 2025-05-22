@@ -4,6 +4,7 @@ $host = "127.0.0.1";
 $port = 3307;
 $db = "health_planner";
 $user = "root";
+
 $pass = "";
 function loadEnv($path) {
     if (!file_exists($path)) {
